@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>GeoMAPS</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+  <style>
+    body, html { margin: 0; padding: 0; height: 100%; font-family: Arial, sans-serif; }
+    #map { height: 100%; margin-left: 270px; }
+    #panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background: #f7f7f7;
+      padding: 10px;
+      overflow-y: auto;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+    button, select { margin-top: 10px; padding: 5px 10px; width: 100%; }
+    pre { white-space: pre-wrap; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div id="panel">
+    <div id="ponto1">
+      <h3>Ponto 1</h3>
+      <pre id="ponto1Info">Clique no mapa para selecionar o Ponto 1</pre>
+    </div>
+    <div id="ponto2">
+      <h3>Ponto 2</h3>
+      <pre id="ponto2Info">Clique no mapa para selecionar o Ponto 2</pre>
+    </div>
+    <div id="tipoRota">
+      <h3>Tipo de Rota</h3>
+      <select id="rotaSelect">
+        <option value="trafego">Rotas de Tráfego</option>
+        <option value="direta">Linha Direta</option>
+      </select>
+    </div>
+    <div id="resultado">
+      <h3>Resultado</h3>
+      <pre id="resultadoInfo">Distância e ângulo serão exibidos aqui</pre>
+    </div>
+    <button onclick="calcularRota()">Calcular Rota</button>
+  </div>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+  <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+</body>
+</html>
